@@ -46,10 +46,14 @@ function App() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-dark-900 dark:to-dark-800">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-dark-900 dark:to-dark-800 theme-transition">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400">Loading your experience...</p>
+          <div className="relative">
+            <div className="w-20 h-20 border-4 border-primary-200 dark:border-primary-800 border-t-primary-600 dark:border-t-primary-400 rounded-full animate-spin mx-auto mb-6"></div>
+            <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-secondary-600 dark:border-t-secondary-400 rounded-full animate-spin mx-auto" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
+          </div>
+          <p className="text-xl text-gray-600 dark:text-gray-400 font-medium">Loading your experience...</p>
+          <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">Please wait while we prepare everything for you</p>
         </div>
       </div>
     );
@@ -58,7 +62,7 @@ function App() {
   const isLoggedIn = !!user;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 theme-transition">
       <ToastContainer 
         position="top-right"
         autoClose={3000}
@@ -71,6 +75,7 @@ function App() {
         pauseOnHover
         theme={theme}
         toastClassName="backdrop-blur-sm"
+        className="mt-16"
       />
       <Routes>
         <Route path="/" element={<Layout />}>
