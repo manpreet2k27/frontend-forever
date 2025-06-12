@@ -42,11 +42,15 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
+    // Apply theme to body as well
+    document.body.className = theme === 'dark' 
+      ? 'bg-dark-900 text-gray-100 theme-transition' 
+      : 'bg-gray-50 text-gray-900 theme-transition';
   }, [theme]);
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-dark-900 dark:to-dark-800 theme-transition">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-900 theme-transition">
         <div className="text-center">
           <div className="relative">
             <div className="w-20 h-20 border-4 border-primary-200 dark:border-primary-800 border-t-primary-600 dark:border-t-primary-400 rounded-full animate-spin mx-auto mb-6"></div>
